@@ -7,6 +7,8 @@ import Footer from "./components/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
 
 let routers = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ let routers = createBrowserRouter([
       { path: "footer", element: <Footer /> },
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
     ],
   },
 
