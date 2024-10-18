@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from 'react'
 import { useFormik } from "formik";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import registerImg from "../../assets/imgs/register.svg";
+import { userContext } from '../../context/userContext';
 
 function Register() {
   let [error, setError] = useState("");
+  let {setLogin} = useContext(userContext)
   let navigate = useNavigate();
+  
   async function handleRegister(formData) {
     // console.log("register ", formData);
     try {
@@ -19,6 +22,8 @@ function Register() {
 
       // console.log("fullResponse", response.data);
       if (response.data.message == "success") {
+        localStorage.setItem('userToken', response.data.token)
+        setLogin(response.data.token)
         navigate("/login");
       }
     } catch (error) {
