@@ -23,7 +23,7 @@ const Categories = () => {
       <div className="row">
         {categories.map((category) => (
           <div className="col-lg-4 col-md-6 mb-4" key={category._id}>
-            <Link to={`/collections/${category.slug}`} className="card h-100 border-0 shadow no-underline">
+            <Link to={`/categories/${category._id}`} className="card h-100 border-0 shadow no-underline">
               <img
                 src={category.image}
                 alt={category.name}

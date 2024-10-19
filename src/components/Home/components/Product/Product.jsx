@@ -5,7 +5,7 @@ import "./Product.css";
 const Product = ({ product, category }) => {
   return (
     <Link
-      to={`/Product/${product._id}`}
+      to={`/products/${product._id}`}
       className="card my-5 border-0 shadow-sm no-underline"
     >
       <div>
