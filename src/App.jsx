@@ -2,37 +2,40 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
+
 import NotFound from "./components/NotFound/NotFound";
-import About from "./components/About/About";
-import Contact from "./components/Contact/Contact";
+import Brands from './components/Brands/Brands'
+
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import UserContextProvider from './context/userContext'
+import Carts from './components/Carts/Carts';
+import Products from './components/Products/Products';
+import ProdectedRoutes from './components/ProdectedRoutes/ProdectedRoutes'
 
 let routers = createBrowserRouter([
-  {
-    path: "",
-    element: <Layout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "home", element: <Home /> },
-      { path: "navbar", element: <Navbar /> },
-      { path: "footer", element: <Footer /> },
-      { path: "about", element: <About /> },
-      { path: "contact", element: <Contact /> },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
-    ],
-  },
+      {path:'' , element:<Layout/> , children:[
+      {index:true , element:<Register/>},
+      {path:'login' , element:<Login/>},
+      {path:'register' , element:<Register/>},
+      {path:'brands' , element:<ProdectedRoutes><Brands/></ProdectedRoutes>},
+      {path:'carts' , element:<ProdectedRoutes><Carts/></ProdectedRoutes>},
+      {path:'products' , element:<ProdectedRoutes><Products/></ProdectedRoutes>},
+      {path:'home' , element:<ProdectedRoutes>Home</ProdectedRoutes>},
+     
+      {path:'*' , element:<NotFound/>}
+    ]}
+  ])
 
-  { path: "*", element: <NotFound /> },
-]);
 
 const App = () => {
   return (
     <>
-      <RouterProvider router={routers}></RouterProvider>
+      <UserContextProvider> 
+    
+        <RouterProvider router = {routers}></RouterProvider>
+
+      </UserContextProvider>
     </>
   );
 };

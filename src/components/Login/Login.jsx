@@ -5,10 +5,14 @@ import { Navigate, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import loginImg from "../../assets/imgs/login.svg";
+import { userContext } from '../../context/userContext';
+import { useContext } from 'react';
+
 
 function Login() {
   let [error, setError] = useState("");
   let navigate = useNavigate();
+  let {setLogin} = useContext(userContext)
   async function handleRegister(formData) {
     // console.log("register ", formData);
     try {
@@ -19,6 +23,8 @@ function Login() {
 
       // console.log("fullResponse", response.data);
       if (response.data.message == "success") {
+        localStorage.setItem('userToken', response.data.token)
+          setLogin(response.data.token)
         navigate("/home");
       }
     } catch (error) {
