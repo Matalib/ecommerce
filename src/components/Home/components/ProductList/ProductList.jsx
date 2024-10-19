@@ -40,7 +40,7 @@ const ProductList = ({ category }) => {
               slidesPerView: 2,
               spaceBetween: 10,
             },
-            640: {
+            765: {
               slidesPerView: 3,
               spaceBetween: 20,
             },

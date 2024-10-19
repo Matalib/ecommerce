@@ -18,3 +18,8 @@
   top: 1rem;
   left: 1rem;
 }
+
+.no-underline,
+.no-underline:hover {
+  text-decoration: none;
+}

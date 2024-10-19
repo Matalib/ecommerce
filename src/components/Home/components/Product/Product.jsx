@@ -1,16 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Product.css";
 
 const Product = ({ product, category }) => {
-  const navigate = useNavigate();
-
-  const handleNavigate = () => {
-    navigate("/Product");
-  };
-
   return (
-    <div className="card my-5 border-0 shadow-sm" onClick={handleNavigate}>
+    <Link
+      to={`/Product/${product._id}`}
+      className="card my-5 border-0 shadow-sm no-underline"
+    >
       <div>
         {category === "new" && (
           <div className="position-absolute bg-success text-white py-2 px-3 label rounded-3">
@@ -33,7 +30,7 @@ const Product = ({ product, category }) => {
         <p className="card-text product-text">{product.description}</p>
         <p className="mt-auto product-price">{product.price} EGP</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
