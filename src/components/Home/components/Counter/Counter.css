@@ -1,0 +1,12 @@
+.counter {
+  background-color: #febf4b;
+}
+
+.count-box h3 {
+  height: 70px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

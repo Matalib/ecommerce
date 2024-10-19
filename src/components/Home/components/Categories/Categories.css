@@ -1,0 +1,8 @@
+.categories img {
+  object-fit: cover;
+}
+
+.no-underline,
+.no-underline:hover {
+  text-decoration: none;
+}

@@ -1,0 +1,25 @@
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.label {
+  top: 1rem;
+  left: 1rem;
+}
+
+.no-underline,
+.no-underline:hover {
+  text-decoration: none;
+}
