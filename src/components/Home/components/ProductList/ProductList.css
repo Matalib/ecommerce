@@ -1,0 +1,26 @@
+.product-swiper-container .swiper-pagination {
+  position: absolute;
+  top: 0px;
+}
+.product-list
+  .swiper-horizontal
+  > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+  left: 95%;
+  white-space: nowrap;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+}
+
+.product-swiper-container img,
+.best img {
+  width: 100%;
+  height: auto;
+}
+
+.best img {
+  width: 100%;
+  height: auto;
+}

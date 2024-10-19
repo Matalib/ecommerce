@@ -1,0 +1,26 @@
+.hero-banner {
+  background-color: #febf4b;
+}
+
+.hero-banner img {
+  max-width: 100%;
+}
+
+.swiper-pagination-bullet {
+  background-color: 000;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #000 !important;
+}
+
+@media (max-width: 992px) {
+  .hero-banner img {
+    max-width: 70%;
+    min-width: 350px;
+  }
+
+  .hero-banner .slide-text {
+    text-align: center;
+  }
+}
