@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import loginImg from "../../assets/imgs/login.svg";
+import loginImg from "../../assets/imgs/loginImg.png";
 import { userContext } from '../../context/userContext';
 import { useContext } from 'react';
 
@@ -14,14 +14,12 @@ function Login() {
   let navigate = useNavigate();
   let {setLogin} = useContext(userContext)
   async function handleRegister(formData) {
-    // console.log("register ", formData);
     try {
       let response = await axios.post(
         "https://ecommerce.routemisr.com/api/v1/auth/signin",
         formData
       );
 
-      // console.log("fullResponse", response.data);
       if (response.data.message == "success") {
         localStorage.setItem('userToken', response.data.token)
           setLogin(response.data.token)
@@ -59,16 +57,16 @@ function Login() {
   });
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 mt-5 d-flex align-content-center">
+      <div className="container pt-5">
+        <div className="row align-items-center">
+          <div className="col-md-6 mt-5 d-flex">
             <img src={loginImg} className="w-100" alt="" />
           </div>
           <div className="col-md-6">
             <div className="row justify-content-center">
               <div className="card-body p-3 p-md-4 p-xl-5">
                 <div className="mb-3">
-                  <h2 className="text-capitalize">Log In Your Account</h2>
+                  <h2 className="text-capitalize text-success mb-2">Log In Your Account</h2>
                 </div>
                 <h2 className="fs-6 fw-normal text-secondary mb-4">
                   Enter your details to login
@@ -137,7 +135,7 @@ function Login() {
                     <div className="col-12">
                       <div className="d-grid my-3">
                         <button
-                          className="btn btn-secondary btn-lg"
+                          className="btn bg-dark text-white btn-lg"
                           type="submit"
                         >
                           Log In

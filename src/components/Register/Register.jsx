@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useFormik } from "formik";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import registerImg from "../../assets/imgs/register.svg";
+import registerImg from "../../assets/imgs/registerImg.png";
 import { userContext } from '../../context/userContext';
 
 function Register() {
@@ -13,14 +13,11 @@ function Register() {
   let navigate = useNavigate();
   
   async function handleRegister(formData) {
-    // console.log("register ", formData);
     try {
       let response = await axios.post(
         "https://ecommerce.routemisr.com/api/v1/auth/signup",
         formData
       );
-
-      // console.log("fullResponse", response.data);
       if (response.data.message == "success") {
         localStorage.setItem('userToken', response.data.token)
         setLogin(response.data.token)
@@ -28,7 +25,6 @@ function Register() {
       }
     } catch (error) {
       if (error.response) {
-        // console.error("Error Response:", error.response.data.message);
         setError(error.response.data.message);
       }
     }
@@ -71,16 +67,16 @@ function Register() {
   });
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 mt-5 d-flex align-content-center">
+      <div className="container pt-5">
+        <div className="row align-items-center">
+          <div className="col-md-6 mt-5 d-flex">
             <img src={registerImg} className="w-100" alt="" />
           </div>
           <div className="col-md-6">
             <div className="row justify-content-center">
               <div className="card-body p-3 p-md-4 p-xl-5">
                 <div className="mb-3">
-                  <h2 className="text-capitalize">Create Your Account</h2>
+                  <h2 className="text-capitalize text-success mb-2">Create Your Account</h2>
                 </div>
                 <h2 className="fs-6 fw-normal text-secondary mb-4">
                   sign up for free to access to in any of our products.
@@ -224,35 +220,11 @@ function Register() {
                         ) : null}
                       </div>
                     </div>
-                    <div className="col-12">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          value=""
-                          name="iAgree"
-                          id="iAgree"
-                          required
-                        />
-                        <label
-                          className="form-check-label text-secondary"
-                          htmlFor="iAgree"
-                        >
-                          I agree to the{" "}
-                          <a
-                            href="#!"
-                            className="link-primary text-decoration-none"
-                          >
-                            terms and conditions
-                          </a>
-                        </label>
-                      </div>
-                    </div>
                     <div className="text-danger">{error}</div>
                     <div className="col-12">
                       <div className="d-grid my-3">
                         <button
-                          className="btn btn-secondary btn-lg"
+                          className="btn bg-dark btn-lg text-white"
                           type="submit"
                         >
                           Sign up
