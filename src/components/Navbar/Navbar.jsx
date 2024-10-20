@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 // import img from '../../assets/images/freshcart.webp'
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { userContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/imgs/logo_1.png";
@@ -19,10 +19,10 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
       <div className="container">
-        <a className="navbar-brand d-flex align-items-center" href="#">
+        <Link className="navbar-brand d-flex align-items-center" to="/home">
           <img src={Logo} alt="Logo" className="logo" />
           <span className="fw-bold px-2 mt-1">E-Commerce</span>
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -49,10 +49,10 @@ export default function Navbar() {
                     Products
                   </NavLink>
                 </li>
-                <li className="nav-item mx-2 position-relative">
+                <li className="nav-item ms-2 position-relative me-5">
                   <NavLink to={"carts"} className="nav-link ">
                     <i className="fas fa-shopping-cart"></i>
-                    <span className="bg-danger position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    <span className="cart-badge bg-danger top-0 position-absolute badge rounded-pill">
                       {cartItemsCount || 0}
                     </span>
                   </NavLink>
@@ -64,7 +64,7 @@ export default function Navbar() {
           <ul className="navbar-nav mb-2 mb-lg-0">
             {!isLogin ? (
               <>
-                <li className="nav-item mx-2">
+                <li className="nav-item m-1">
                   <NavLink
                     to={"register"}
                     className="btn btn-dark px-3 py-2 rounded-3"
@@ -72,7 +72,7 @@ export default function Navbar() {
                     Register
                   </NavLink>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item m-1">
                   <NavLink
                     to={"login"}
                     className="btn btn-dark px-3 py-2 rounded-3"
@@ -82,7 +82,7 @@ export default function Navbar() {
                 </li>
               </>
             ) : (
-              <li className="nav-item ms-3">
+              <li className="nav-item">
                 <button
                   onClick={logOut}
                   role="button"

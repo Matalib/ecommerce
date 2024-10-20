@@ -67,7 +67,7 @@ function Register() {
   });
   return (
     <>
-      <div className="container pt-5">
+      <div className="container pt-5 mt-4">
         <div className="row align-items-center">
           <div className="col-md-6 mt-5 d-flex">
             <img src={registerImg} className="w-100" alt="" />
