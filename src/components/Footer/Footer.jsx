@@ -4,7 +4,7 @@ const Footer = () => {
     <footer className="bg-dark py-5">
       <div className="container">
         <div className="row mt-3">
-          <div className="col-3 text-white">
+          <div className="col-sm-12 col-md-6 col-lg-3 text-white">
             <div>
               <h4 className="mb-4 fs-4">My Store</h4>
               <p>
@@ -12,7 +12,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="col-3 text-white">
+          <div className="col-sm-12 col-md-6 col-lg-3 text-white">
             <div>
               <h4 className="mb-4 fs-4">Shopping & Categories</h4>
               <ul className="list-unstyled">
@@ -22,57 +22,58 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-3 text-white">
+          <div className="col-sm-12 col-md-6 col-lg-3 text-white">
             <div>
               <h4 className="mb-4 fs-4">Useful Links</h4>
               <ul className="list-unstyled">
                 <li className="mb-2">
-                  <NavLink to="home" className="text-decoration-none text-white-50">
+                  <NavLink
+                    to="home"
+                    className="text-decoration-none text-white-50"
+                  >
                     Home
                   </NavLink>
                 </li>
                 <li className="mb-2">
-                  <NavLink to="products" className="text-decoration-none text-white-50">
+                  <NavLink
+                    to="products"
+                    className="text-decoration-none text-white-50"
+                  >
                     Products
                   </NavLink>
                 </li>
                 <li className="mb-2">
-                  <NavLink to="carts" className="text-decoration-none text-white-50">
+                  <NavLink
+                    to="carts"
+                    className="text-decoration-none text-white-50"
+                  >
                     Carts
                   </NavLink>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="col-3 text-white">
+          <div className="col-sm-12 col-md-6 col-lg-3 text-white">
             <div>
               <h4 className="mb-4 fs-4">Stay Connected</h4>
               <ul className="list-unstyled d-flex align-items-center gap-4">
                 <li>
-                  <NavLink
-                    href="https://github.com/alaashalaby"
-                    target="_blank"
-                  >
-                    <i className="fa-brands fa-github text-white fs-4"></i>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink href="https://wa.me/+201128589590" target="_blank">
+                  <a href="https://wa.me/+201128589590" target="_blank">
                     <i className="fa-brands fa-whatsapp text-white fs-4"></i>
-                  </NavLink>
+                  </a>
                 </li>
                 <li>
-                  <NavLink
+                  <a
                     href="https://www.linkedin.com/in/alaa-shalaby-262b37218/"
                     target="_blank"
                   >
                     <i className="fa-brands fa-linkedin text-white fs-4"></i>
-                  </NavLink>
+                  </a>
                 </li>
                 <li>
-                  <NavLink href="http://facebook.com" target="_blank">
+                  <a href="http://facebook.com" target="_blank">
                     <i className="fa-brands fa-facebook text-white fs-4"></i>
-                  </NavLink>
+                  </a>
                 </li>
               </ul>
             </div>
