@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContextProvider";
 import emptyCartImage from "../../assets/imgs/emptyCart.png";
 import { Link } from "react-router-dom";
+import Loader from "../Loader/Loader";
 const Cart = () => {
   const {
     getUserCart,
@@ -12,10 +13,12 @@ const Cart = () => {
   } = useContext(CartContext);
   const [cartDetails, setCartDetails] = useState(null);
   const [updatingProductId, setUpdatingProductId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   async function getCartItems() {
     const response = await getUserCart();
     if (response?.data?.status === "success") {
       setCartDetails(response.data.data);
+      setIsLoading(false);
     }
   }
   async function deleteItem(productId) {
@@ -38,10 +41,11 @@ const Cart = () => {
   }, []);
   return (
     <div className="container mt-5">
+      {isLoading && <Loader/>}
       {cartDetails?.products?.length === 0 &&
         <div className="h-75 d-flex align-items-center justify-content-center flex-column gap-4 py-5">
           <img src={emptyCartImage} alt="emptyCart" width="350"/>
-          <Link to="/home"><button className="btn btn-success mt-2">Continue Shopping</button></Link>
+          <Link to="/products"><button className="btn btn-success mt-2">Continue Shopping</button></Link>
         </div>
       }
       {cartDetails?.products?.length > 0 &&
