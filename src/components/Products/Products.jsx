@@ -29,7 +29,7 @@ export default function Products() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container mt-5 pt-5">
       {!isLoading ? (
         <div className="d-flex flex-wrap">
           {product.map((productInfo) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import bgCounter from "../../../../assets/imgs/bg_counter.png";
 import "./Counter.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Counter = () => {
   const calculateTimeLeft = () => {
@@ -33,11 +33,7 @@ const Counter = () => {
 
     return () => clearInterval(timer);
   }, []);
-  const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("/Product");
-  };
   return (
     <div className="container ">
       <div className="row align-items-center counter my-4 rounded-4 p-5">
@@ -67,12 +63,10 @@ const Counter = () => {
               <span>Seconds</span>
             </div>
           </div>
-          <button
-            className="btn btn-dark px-4 py-2 mt-4"
-            onClick={handleNavigate}
-          >
+
+          <Link to="/products" className="btn btn-dark px-4 py-2 mt-4">
             Shop now
-          </button>
+          </Link>
         </div>
       </div>
 
