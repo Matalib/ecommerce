@@ -1,51 +1,96 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from "react";
 // import img from '../../assets/images/freshcart.webp'
-import { NavLink } from 'react-router-dom'
-import { userContext } from '../../context/userContext';
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import { userContext } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/imgs/logo_1.png";
+import "./Navbar.css";
+
 export default function Navbar() {
-  let navigate = useNavigate()
-  let {isLogin} = useContext(userContext)
-  function logOut(){
-    localStorage.removeItem('userToken');
-    navigate('/register')
-    setLogin (null);  //modify isLogin from token >>> null
-   
+  let navigate = useNavigate();
+  let { isLogin, setLogin } = useContext(userContext);
+
+  function logOut() {
+    localStorage.removeItem("userToken");
+    navigate("/register");
+    setLogin(null); //modify isLogin from token >>> null
   }
   return (
-    <nav className='bg-dark-subtle px-3 shadow-sm'>
-    <div className='d-flex flex-column flex-lg-row justify-content-between'>
-        <div className='logo d-flex flex-column flex-lg-row'>
-          
-          {isLogin ?
-          <ul className='d-flex flex-column flex-lg-row list-unstyled p-3'>
-          <li><NavLink to ={'home'} className='text-decoration-none p-2'>Home</NavLink></li>
-          <li><NavLink to ={'products'} className='text-decoration-none p-2'>Products </NavLink></li>
-          <li><NavLink to ={'carts'} className='text-decoration-none p-2'>Carts</NavLink></li>
-          <li><NavLink to ={'brands'} className='text-decoration-none p-2'>Brands</NavLink></li>
-          
-          </ul>: null
-          }
-          
+    <nav className="navbar navbar-expand-lg navbar-light bg-white py-2 fixed-top shadow">
+      <div className="container">
+        <a className="navbar-brand d-flex align-items-center" href="#">
+          <img src={Logo} alt="Logo" className="logo" />
+          <span className="fw-bold px-2 mt-1">E-Commerce</span>
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            {isLogin ? (
+              <>
+                <li className="nav-item">
+                  <NavLink to={"home"} className="nav-link ">
+                    Home
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to={"products"} className="nav-link ">
+                    Products
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to={"carts"} className="nav-link ">
+                    Carts
+                  </NavLink>
+                </li>
+              </>
+            ) : null}
+          </ul>
+
+          <ul className="navbar-nav mb-2 mb-lg-0">
+            {!isLogin ? (
+              <>
+                <li className="nav-item mx-2">
+                  <NavLink
+                    to={"register"}
+                    className="btn btn-dark px-3 py-2 rounded-3"
+                  >
+                    Register
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to={"login"}
+                    className="btn btn-dark px-3 py-2 rounded-3"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item mx-2">
+                <button
+                  onClick={logOut}
+                  role="button"
+                  className="btn btn-dark px-3 py-2 rounded-3"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
+          </ul>
         </div>
-
-      <div className='social'>
-      <ul className='d-flex flex-column flex-lg-row p-3 list-unstyled'>
-      {!isLogin ? //not token
-        <>
-          <li><NavLink to={'register'} className='text-decoration-none p-2'>Register</NavLink></li>
-          <li><NavLink to={'login'} className='text-decoration-none p-2'>Login</NavLink></li> 
-        </>:
-          <li className='px-2'><span onClick={()=>{logOut()}}>Logout</span></li>
-
-      }  
-          
-      </ul>
       </div>
- 
-    </div>
-
-  </nav>
-    
-  )
+    </nav>
+  );
 }
