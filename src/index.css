@@ -66,3 +66,17 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+.styleProduct .btn{
+  transition: transform 1s  , opacity 1s;
+  transform: translateY(100%);
+  opacity: 0;
+
+}
+
+.styleProduct:hover .btn{
+
+  transform: translateY(0%);
+  opacity: 1;
+
+}

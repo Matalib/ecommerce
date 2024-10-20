@@ -35,7 +35,7 @@ export default function Products() {
           {product.map((productInfo) => {
             return (
               <>
-                <div className="w-25 px-4">
+                <div className="w-25 px-4 styleProduct">
                   <Link to = {`/productDetails/${productInfo.id}`}>
                     <img
                       src={productInfo.imageCover}
