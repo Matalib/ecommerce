@@ -59,7 +59,7 @@ export default function Products() {
                       </span>
                     </div>
                   </Link>
-                  <button onClick= {()=>{addProductItem(productInfo.id)}} className='btn bg-info text-white p-2 m-2 w-100'>Add To Cart</button>
+                  <button onClick= {()=>{}} className='btn bg-info text-white p-2 m-2 w-100'>Add To Cart</button>
                 </div>
               </>
             );
