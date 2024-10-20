@@ -13,6 +13,7 @@ import Carts from './components/Carts/Carts';
 import Products from './components/Products/Products';
 import ProdectedRoutes from './components/ProdectedRoutes/ProdectedRoutes'
 
+import ProductDetails from './components/ProductDetails/ProductDetails';
 let routers = createBrowserRouter([
       {path:'' , element:<Layout/> , children:[
       {index:true , element:<Register/>},
@@ -22,7 +23,7 @@ let routers = createBrowserRouter([
       {path:'carts' , element:<ProdectedRoutes><Carts/></ProdectedRoutes>},
       {path:'products' , element:<ProdectedRoutes><Products/></ProdectedRoutes>},
       {path:'home' , element:<ProdectedRoutes><Home/></ProdectedRoutes>},
-     
+      {path:'productDetails/:id' , element:<ProdectedRoutes><ProductDetails/></ProdectedRoutes>},
       {path:'*' , element:<NotFound/>}
     ]}
   ])
