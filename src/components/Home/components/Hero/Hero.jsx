@@ -28,7 +28,7 @@ const Hero = () => {
           modules={[Pagination, Autoplay]}
         >
           <SwiperSlide>
-            <div className="row align-items-center vh-100 pt-5">
+            <div className="row align-items-center vh-100 pt-5 mt-4">
               <div className="col-lg-7 text-center">
                 <img src={slider1} alt="Fashion Slide 1" />
               </div>
@@ -47,7 +47,7 @@ const Hero = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="row align-items-center vh-100 pt-5">
+            <div className="row align-items-center vh-100 pt-5 mt-5">
               <div className="col-lg-7 text-center">
                 <img src={slider2} alt="Fashion Slide 2" />
               </div>
@@ -64,7 +64,7 @@ const Hero = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="row align-items-center vh-100 pt-5">
+            <div className="row align-items-center vh-100 pt-5 mt-5">
               <div className="col-lg-7 text-center">
                 <img src={slider3} alt="Fashion Slide 3" />
               </div>
