@@ -12,6 +12,7 @@ import UserContextProvider from './context/userContext'
 import Carts from './components/Carts/Carts';
 import Products from './components/Products/Products';
 import ProdectedRoutes from './components/ProdectedRoutes/ProdectedRoutes'
+import CartContextProvider from "./context/CartContextProvider";
 
 let routers = createBrowserRouter([
       {path:'' , element:<Layout/> , children:[
@@ -30,13 +31,13 @@ let routers = createBrowserRouter([
 
 const App = () => {
   return (
-    <>
+    <CartContextProvider>
       <UserContextProvider> 
     
         <RouterProvider router = {routers}></RouterProvider>
 
       </UserContextProvider>
-    </>
+    </CartContextProvider>
   );
 };
 
