@@ -3,7 +3,7 @@ import { ColorRing } from "react-loader-spinner";
 
 export default function Loader() {
   return (
-    <div>
+    <div className='d-flex vh-100 justify-content-center align-items-center'>
       <ColorRing
         visible={true}
         height="80"
