@@ -1,4 +1,3 @@
-import React, { useContext, useState } from "react";
 // import img from '../../assets/images/freshcart.webp'
 import { NavLink, Link } from "react-router-dom";
 import { userContext } from "../../context/userContext";
@@ -7,14 +6,21 @@ import Logo from "../../assets/imgs/logo_1.png";
 import "./Navbar.css";
 import { CartContext } from "../../context/CartContextProvider";
 
+import React, { useContext, useState } from 'react'
+
+
 export default function Navbar() {
   let navigate = useNavigate();
   let { isLogin, setLogin } = useContext(userContext);
   const { cartItemsCount } = useContext(CartContext);
-  function logOut() {
-    localStorage.removeItem("userToken");
-    navigate("/register");
-    setLogin(null); //modify isLogin from token >>> null
+  
+  function logOut(){
+    localStorage.removeItem('userToken');
+    setLogin(null);
+    navigate('/register')
+    
+       
+   
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
@@ -97,4 +103,5 @@ export default function Navbar() {
       </div>
     </nav>
   );
+  
 }
