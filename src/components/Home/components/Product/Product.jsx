@@ -26,7 +26,7 @@ const Product = ({ product, category }) => {
         />
       </div>
       <div className="card-body d-flex flex-column">
-        <h5 className="card-title product-text">{product.title}</h5>
+        <h5 className="card-title product-text ">{product.title}</h5>
         <p className="card-text product-text">{product.description}</p>
         <p className="mt-auto product-price">{product.price} EGP</p>
       </div>

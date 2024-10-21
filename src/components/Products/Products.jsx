@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import axios from "axios";
 import { useState } from "react";
@@ -6,9 +6,16 @@ import { useEffect } from "react";
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
 
+import { CartContext } from "../../context/CartContextProvider";
 export default function Products() {
   const [product, setProduct] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const { addProductToCart } = useContext(CartContext);
+
+  async function addProductItem(id) {
+    let response = await addProductToCart(id);
+    console.log("response", response);
+  }
 
   function getProducts() {
     axios
@@ -36,30 +43,40 @@ export default function Products() {
             return (
               <>
                 <div className="w-25 px-4 styleProduct">
-                  <Link to = {`/productDetails/${productInfo.id}`}>
+                  <Link
+                    to={`/productDetails/${productInfo.id}`}
+                    className="card my-5 border-0 shadow-sm text-decoration-none"
+                  >
                     <img
                       src={productInfo.imageCover}
-                      className="w-100"
+                      className="card-img-top w-100"
                       alt={productInfo.title}
                     />
-                    <span className="text-info d-block">
+                    <span className="text-info d-block text-decoration-none px-2">
                       {" "}
                       {productInfo.category.name}{" "}
                     </span>
-                    <span className=" d-block">
+                    <span className=" d-block text-decoration-none px-2">
                       {" "}
                       {productInfo.title.split(" ").slice(0, 3).join(" ")}{" "}
                     </span>
 
-                    <div className="d-flex justify-content-between my-2">
+                    <div className="d-flex justify-content-between my-2 card-body d-flex flex-column">
                       <span>{productInfo.price} EGP</span>
                       <span>
                         {productInfo.ratingsQuantity}
-                        <i className="fas fa-star text-warning"></i>
+                        <i className="fas fa-star text-warning text-decoration-none"></i>
                       </span>
                     </div>
+                    <button
+                      onClick={() => {
+                        addProductItem(productInfo.id);
+                      }}
+                      className="btn bg-info text-white w-100 text-decoration-none "
+                    >
+                      Add To Cart
+                    </button>
                   </Link>
-                  <button onClick= {()=>{}} className='btn bg-info text-white p-2 m-2 w-100'>Add To Cart</button>
                 </div>
               </>
             );
