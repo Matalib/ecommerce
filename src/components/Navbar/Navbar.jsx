@@ -1,33 +1,25 @@
-// import img from '../../assets/images/freshcart.webp'
 import { NavLink, Link } from "react-router-dom";
 import { userContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/imgs/logo_1.png";
 import "./Navbar.css";
 import { CartContext } from "../../context/CartContextProvider";
-
-import React, { useContext, useState } from 'react'
-
-
+import { useContext } from 'react'
 export default function Navbar() {
   let navigate = useNavigate();
   let { isLogin, setLogin } = useContext(userContext);
   const { cartItemsCount } = useContext(CartContext);
-  
   function logOut(){
     localStorage.removeItem('userToken');
     setLogin(null);
     navigate('/register')
-    
-       
-   
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" to="/home">
           <img src={Logo} alt="Logo" className="logo" />
-          <span className="fw-bold px-2 mt-1">E-Commerce</span>
+          <span className="fw-bold px-2 mt-1 text-success">E-Commerce</span>
         </Link>
         <button
           className="navbar-toggler"
@@ -46,18 +38,18 @@ export default function Navbar() {
             {isLogin ? (
               <>
                 <li className="nav-item mx-2">
-                  <NavLink to={"home"} className="nav-link">
+                  <NavLink to={"home"} className="nav-link fs-5 fw-medium">
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item mx-2">
-                  <NavLink to={"products"} className="nav-link">
+                  <NavLink to={"products"} className="nav-link fs-5 fw-medium">
                     Products
                   </NavLink>
                 </li>
-                <li className="nav-item ms-2 position-relative me-5">
+                <li className="nav-item ms-2 position-relative me-5 mt-1">
                   <NavLink to={"carts"} className="nav-link ">
-                    <i className="fas fa-shopping-cart"></i>
+                    <i className="fas fa-shopping-cart text-dark"></i>
                     <span className="cart-badge bg-danger top-0 position-absolute badge rounded-pill">
                       {cartItemsCount || 0}
                     </span>
@@ -71,20 +63,20 @@ export default function Navbar() {
             {!isLogin ? (
               <>
                 <li className="nav-item m-1">
-                  <NavLink
+                  <Link
                     to={"register"}
                     className="btn btn-dark px-3 py-2 rounded-3"
                   >
                     Register
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="nav-item m-1">
-                  <NavLink
+                  <Link
                     to={"login"}
                     className="btn btn-dark px-3 py-2 rounded-3"
                   >
                     Login
-                  </NavLink>
+                  </Link>
                 </li>
               </>
             ) : (
