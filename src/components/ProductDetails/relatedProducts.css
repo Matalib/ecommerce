@@ -1,0 +1,10 @@
+.related_header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translate(-50%, -50%);
+  width: 125px;
+  height: 3px;
+  background-color: #080;
+}
