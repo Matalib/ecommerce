@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import registerImg from "../../assets/imgs/registerImg.png";
 import { userContext } from '../../context/userContext';
-
+import Chatbot from '../Chatbot/Chatbot';
 function Register() {
   let [error, setError] = useState("");
   let {setLogin} = useContext(userContext)
@@ -72,6 +72,7 @@ function Register() {
           <div className="col-md-6 mt-5 d-flex">
             <img src={registerImg} className="w-100" alt="" />
           </div>
+          
           <div className="col-md-6">
             <div className="row justify-content-center">
               <div className="card-body p-3 p-md-4 p-xl-5">
@@ -112,6 +113,7 @@ function Register() {
                     </div>
                     <div className="col-12">
                       <div className="form-floating mb-3">
+                        
                         <input
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
@@ -246,7 +248,8 @@ function Register() {
                 </form>
               </div>
             </div>
-          </div>
+          </div>      <Chatbot/>
+
         </div>
       </div>
     </>

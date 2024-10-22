@@ -12,7 +12,7 @@ import Carts from './components/Carts/Carts';
 import Products from './components/Products/Products';
 import ProdectedRoutes from './components/ProdectedRoutes/ProdectedRoutes'
 import CartContextProvider from "./context/CartContextProvider";
-
+import Chatbot from "./components/Chatbot/Chatbot";
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import { Toaster } from "react-hot-toast";
 let routers = createBrowserRouter([
