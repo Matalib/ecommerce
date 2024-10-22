@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import registerImg from "../../assets/imgs/registerImg.png";
 import { userContext } from '../../context/userContext';
-import Chatbot from '../Chatbot/Chatbot';
 function Register() {
   let [error, setError] = useState("");
   let {setLogin} = useContext(userContext)
@@ -248,7 +247,7 @@ function Register() {
                 </form>
               </div>
             </div>
-          </div>      <Chatbot/>
+          </div> 
 
         </div>
       </div>

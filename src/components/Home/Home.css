@@ -1,0 +1,15 @@
+.chatbot-button,
+#chat-container {
+  position: fixed;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatbot-button {
+  bottom: 20px;
+  background-color: #5cb85c;
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  cursor: pointer;
+}
