@@ -1,11 +1,10 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./Product.css";
 
 const Product = ({ product, category }) => {
   return (
     <Link
-      to={`/productDetails/${product._id}`}
+      to={`/productDetails/${product._id}/${product.category.name}`}
       className="card my-5 border-0 shadow-sm no-underline"
     >
       <div>
