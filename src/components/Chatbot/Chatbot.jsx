@@ -43,7 +43,7 @@ const Chatbot = () => {
     };
 
     return (
-        <div id="chat-container">
+        <div id="chat-container" className="p-2 mx-3 shadow-sm">
             <div id="chat-box" ref={chatBoxRef}>
                 {messages.map((msg, index) => (
                     <div key={index} className={`message ${msg.sender}`}>
@@ -53,13 +53,14 @@ const Chatbot = () => {
             </div>
             <div id="user-input">
                 <input
+                className='form-control rounded-3'
                     type="text"
                     value={userMessage}
                     onChange={(e) => setUserMessage(e.target.value)}
                     onKeyUp={handleKeyPress}
                     placeholder="Type your message..."
                 />
-                <button onClick={handleSendMessage}>Send</button>
+                <button onClick={handleSendMessage} className='ms-2 rounded-3 px-3'>Send</button>
             </div>
         </div>
     );
