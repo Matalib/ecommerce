@@ -55,7 +55,9 @@ export default function ProductDetails() {
       setIsLoading(false);
     }
   }
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
   useEffect(() => {
     getProductDetails(id);
     getProducts();
