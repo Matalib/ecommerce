@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContextProvider";
 import toast from "react-hot-toast";
+import Loader from "../Loader/Loader";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -16,12 +17,14 @@ export default function ProductDetails() {
   let { cartItemsCount, setCartItemsCount, addProductToCart } =
     useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(true);
   const [currentProductId, setCurrentProductId] = useState(0);
   function getProductDetails(id) {
     axios
       .get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
       .then(({ data }) => {
         setDetails(data.data);
+        setIsPageLoading(false);
       })
       .catch(() => {});
   }
@@ -58,47 +61,57 @@ export default function ProductDetails() {
     getProducts();
   }, [id, category]);
   return (
-    <div className="container p-5 mt-5">
-      {details && (
-        <div className="shadow mt-2 rounded">
-          <div className="row align-items-center py-2">
-            <div className="col-sm-12 col-lg-4">
-              <img src={details.imageCover} alt={details.title} width="400" />
+    <>
+      {details ? (
+        <>
+          <div className="container p-5 mt-5">
+            <div className="shadow mt-2 rounded">
+              <div className="row align-items-center py-2">
+                <div className="col-sm-12 col-lg-4">
+                  <img
+                    src={details.imageCover}
+                    alt={details.title}
+                    width="400"
+                  />
+                </div>
+                <div className="col-sm-12 col-lg-8">
+                  <h2 className="fw-bold text-success mb-3 fs-1">
+                    {details.title.substring(0, 20)}
+                  </h2>
+                  <p className="fs-4 text-dark fw-medium mb-3">
+                    {details.description}
+                  </p>
+                  <h3>
+                    Quantity Available :{" "}
+                    <span className="text-success">{details.quantity}</span>
+                  </h3>
+                  <p className="fw-bold fs-3">Price: {details.price} EGP</p>
+                  <button
+                    onClick={() => addItemToCart(details.id)}
+                    className="btn bg-success text-white fs-5 mt-1"
+                  >
+                    {isLoading && currentProductId === details.id ? (
+                      <i className="fa fa-spinner fa-spin fa-xl"></i>
+                    ) : (
+                      "Add to cart"
+                    )}
+                    <i className="fas fa-cart-plus ms-2"></i>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="col-sm-12 col-lg-8">
-              <h2 className="fw-bold text-success mb-3 fs-1">
-                {details.title.substring(0, 20)}
-              </h2>
-              <p className="fs-4 text-dark fw-medium mb-3">
-                {details.description}
-              </p>
-              <h3>
-                Quantity Available :{" "}
-                <span className="text-success">{details.quantity}</span>
-              </h3>
-              <p className="fw-bold fs-3">Price: {details.price} EGP</p>
-              <button
-                onClick={() => addItemToCart(details.id)}
-                className="btn bg-success text-white fs-5 mt-1"
-              >
-                {isLoading && currentProductId === details.id ? (
-                  <i className="fa fa-spinner fa-spin fa-xl"></i>
-                ) : (
-                  "Add to cart"
-                )}
-                <i className="fas fa-cart-plus ms-2"></i>
-              </button>
-            </div>
+            <RelatedProducts
+              relatedProducts={relatedProducts}
+              isLoading={isLoading}
+              currentProductId={currentProductId}
+              addItemToCart={addItemToCart}
+            />
           </div>
-        </div>
+        </>
+      ) : (
+        isPageLoading && <Loader />
       )}
-      <RelatedProducts
-        relatedProducts={relatedProducts}
-        isLoading={isLoading}
-        currentProductId={currentProductId}
-        addItemToCart={addItemToCart}
-      />
-    </div>
+    </>
   );
 }
 
