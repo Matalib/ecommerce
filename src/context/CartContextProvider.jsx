@@ -70,6 +70,13 @@ const CartContextProvider = ({ children }) => {
       return err;
     }
   }
+function clearCart() {
+    return axios
+      .delete(`https://ecommerce.routemisr.com/api/v1/cart`, { headers })
+      .then((response) => response)
+      .catch((error) => error);
+  }
+
   useEffect(() => {
     getUserCart();
   }, []);
@@ -83,6 +90,7 @@ const CartContextProvider = ({ children }) => {
         deleteCartItem,
         updateCartProduct,
         addProductToCart,
+        clearCart
       }}
     >
       {children}
